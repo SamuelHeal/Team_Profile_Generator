@@ -1,0 +1,73 @@
+.container{
+    border-style: solid;
+    width: 70%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cardStyle{
+    min-width: 250px;
+    width: 28%;
+    margin: 20px;
+    height: 300px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #888888;
+    transform: scale(1);
+}
+
+.cardHeader{
+    position: relative;
+    width: 100%;
+    height: 30%;
+    top: 0px;
+    background-color: rgb(16, 127, 231);
+}
+
+.cardHeader h2{
+    position: relative;
+    left: 10px;
+    color: white;
+}
+
+.cardHeader h3{
+    position: relative;
+    left: 10px;
+    color: white;
+}
+
+.cardHeader h3 img{
+    position: relative;
+    top: -5px;
+    width: 50px
+}
+
+.cardBody{
+    position: relative;
+    width: 100%;
+    height:70%;
+    background-color: rgba(235, 232, 232, 0.637);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTextBox{
+    width: 80%;
+    min-height: 20%;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgba(189, 187, 187, 0.637);
+    background-color: white;
+}
+
+.cardTextBox p{
+    position: relative;
+    top: 25%
+    
+}
