@@ -1,4 +1,6 @@
-const generateCards = require("./TextGeneration/htmlGen.js")
+const generateCards = require("./Source/TextGeneration/htmlGen.js")
+const htmlTop = require("./Source/TextGeneration/htmlTop.js")
+const htmlBottom = require("./Source/TextGeneration/htmlBottom.js")
 const inquirer = require("inquirer");
 const fs = require("fs")
 
@@ -88,6 +90,15 @@ const internQuestions = [
     },
 ]
 
+const confirmBuild = [
+    {
+        type: "list",
+        message: "Would you like to build your Team Profile page?",
+        name: "confirmation",
+        choices: ["Yes", "No"]
+    }
+]
+
 class employee{
     constructor(name, id, email){
         this.name = name;
@@ -152,13 +163,11 @@ function init(){
     .prompt(initQuestions)
     .then(function(results){
         teamMembers.push(new manager(results.name, results.Identify, results.Email, results.officeNumber))
-        console.log(teamMembers)
-
         if (results.confirm === "Yes"){
             askPosition()
         }
         else{
-            generateHTML()
+            buildHTML()
 
         }
     })
@@ -182,13 +191,11 @@ function askIntern(){
     .prompt(internQuestions)
     .then(function(results){
         teamMembers.push(new intern(results.name, results.Identify, results.Email, results.School))
-        console.log(teamMembers)
-
         if (results.confirm === "Yes"){
             askPosition()
         }
         else{
-            generateHTML()
+            buildHTML()
         }
     })
 }
@@ -198,53 +205,42 @@ function askEngineer(){
     .prompt(engineerQuestions)
     .then(function(results){
         teamMembers.push(new engineer(results.name, results.Identify, results.Email, results.Github))
-        console.log(teamMembers)
         if (results.confirm === "Yes"){
             askPosition()
         }
         else{
-            generateHTML()
+            buildHTML()
+        
         }
     })
 }
 
+function buildHTML(){
+    inquirer
+    .prompt(confirmBuild)
+    .then((results) => fs.writeFile("profile.html", htmlTop.htmlTop(), (err) =>
+    err ? console.error(err) : console.log('Successfully created index.html file!')))
+    .then((results) => generateHTML())
+    // .then(writeToFile("index2.html", htmlBottom.htmlBottom()))
+}
 function generateHTML(){
-    // writeToFile("index2.html", generateCards.generateCard(teamMembers[i].name, "manager", teamMembers[i].id, teamMembers[i].email, teamMembers[i].officeNumber))
-
     for (let i = 0; i < teamMembers.length; i++){
-        // if (teamMembers[i] === "manager"){
-        //     writeToFile("index2.html", generateCards.generateCard(teamMembers[i].name, "manager", teamMembers[i].id, teamMembers[i].email, teamMembers[i].officeNumber))
-        // }
-        // else if (teamMembers[i] === "engineer"){
-        //     writeToFile("index2.html", generateCards.generateCard(teamMembers[i].name, "engineer",teamMembers[i].id, teamMembers[i].email, teamMembers[i].github))
-        // }
-        // else if (teamMembers[i] === "intern"){
-        //     writeToFile("index2.html", generateCards.generateCard(teamMembers[i].name, "intern", teamMembers[i].id, teamMembers[i].email, teamMembers[i].school))
-        // }
-        console.log(teamMembers[i])
-        console.log(teamMembers[i].name)
-        console.log(teamMembers[i].id)
-        console.log(teamMembers[i].email)
-        if (teamMembers[i] === "manager"){
-            console.log(teamMembers[i].officeNumber)
+        if (teamMembers[i].getRole() === "Manager"){
+            writeToFile("profile.html", generateCards.generateCard(teamMembers[i].name, "manager", teamMembers[i].id, teamMembers[i].email, teamMembers[i].officeNumber))
         }
-
-
-
+        else if (teamMembers[i].getRole() === "Engineer"){
+            writeToFile("profile.html", generateCards.generateCard(teamMembers[i].name, "engineer",teamMembers[i].id, teamMembers[i].email, teamMembers[i].github))
+        }
+        else if (teamMembers[i].getRole() === "Intern"){
+            writeToFile("profile.html", generateCards.generateCard(teamMembers[i].name, "intern", teamMembers[i].id, teamMembers[i].email, teamMembers[i].school))
+        }
     }
+    writeToFile("profile.html", htmlBottom.htmlBottom())
 }
 
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) =>
-    err ? console.error(err) : console.log('Successfully created index.html file!'))
+    fs.appendFile(fileName, data, (err) =>
+    err ? console.error(err) : console.log('success'))
 }
 
-
-
 init()
-
-// function test(){
-//     writeToFile("index.html", generateCards.generateCard("Sam", "manager", "a", "aef", "af"))
-// }
-
-// test()
