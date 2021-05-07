@@ -1,5 +1,4 @@
 .container{
-    border-style: solid;
     width: 70%;
     justify-content: center;
     display: flex;
@@ -58,7 +57,8 @@
 }
 
 .cardTextBox{
-    width: 80%;
+    width: 200px;
+    text-align: left;
     min-height: 20%;
     border-style: solid;
     border-width: 0.5px;

@@ -6,7 +6,7 @@ function generateCard(name, position, first, second, third){
     const intern = "./Images/Intern.png"
     const manager = "./Images/Manager.png"
 
-    if (position === "manager"){
+    if (position === "Manager"){
         return `
         <div class="cardStyle">
             <div class="cardHeader">
@@ -19,7 +19,7 @@ function generateCard(name, position, first, second, third){
                     <p>ID: ${first}</p>
                 </div>
                 <div class="cardTextBox">
-                    <p>Email: ${second}</p>
+                    <p>Email: <a href="mailto:${second}">${second}<a/></p>
                 </div>
                 <div class="cardTextBox">
                     <p>Office Number: ${third}</p>
@@ -27,7 +27,7 @@ function generateCard(name, position, first, second, third){
             </div>
         </div>`
     }
-    else if (position === "engineer"){
+    else if (position === "Engineer"){
         return `
         <div class="cardStyle">
             <div class="cardHeader">
@@ -40,15 +40,15 @@ function generateCard(name, position, first, second, third){
                     <p>ID: ${first}</p>
                 </div>
                 <div class="cardTextBox">
-                    <p>Email: ${second}</p>
+                    <p>Email: <a href="mailto:${second}">${second}<a/></p>
                 </div>
                 <div class="cardTextBox">
-                    <p>Github: <a>https://github.com/${third}<a></p>
+                    <p>Github: <a href="https://github.com/${third}" target="_blank">${third}<a></p>
                 </div>
             </div>
         </div>`
     }
-    else if (position === "intern"){
+    else if (position === "Intern"){
         return `
         <div class="cardStyle">
             <div class="cardHeader">
@@ -61,7 +61,7 @@ function generateCard(name, position, first, second, third){
                     <p>ID: ${first}</p>
                 </div>
                 <div class="cardTextBox">
-                    <p>Email: ${second}</p>
+                    <p>Email: <a href="mailto:${second}">${second}<a/></p>
                 </div>
                 <div class="cardTextBox">
                     <p>School: ${third}</p>
