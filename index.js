@@ -8,8 +8,6 @@ const Intern = require("./Classes/Intern")
 const inquirer = require("inquirer");
 const fs = require("fs")
 
-
-
 const initQuestions = [
     {
         message: "Please enter the team leader's name: ",
@@ -103,68 +101,7 @@ const confirmBuild = [
     }
 ]
 
-// class employee{
-//     constructor(name, id, email){
-//         this.name = name;
-//         this.id = id;
-//         this.email = email
-//     }
-
-//     getName(){
-//         return this.name
-//     }
-
-//     getID(){
-//         return this.id
-//     }
-
-//     getEmail(){
-//         return this.email
-//     }
-
-//     getRole(){
-//         return "Employee"
-//     }
-// }
-
-// class manager extends employee {
-//     constructor(name, id, email, officeNumber){
-//         super(name, id, email)
-//         this.officeNumber = officeNumber
-//     }
-
-//     getRole(){
-//         return "Manager"
-//     }
-// }
-
-// class engineer extends employee {
-//     constructor(name, id, email, github){
-//         super(name, id, email)
-//         this.github = github
-//     }
-
-//     getRole(){
-//         return "Engineer"
-//     }
-// }
-
-// class intern extends employee {
-//     constructor(name, id, email, school){
-//         super(name, id, email)
-//         this.school = school
-//     }
-
-//     getRole(){
-//         return "Intern"
-//     }
-// }
-
 const teamMembers = []
-
-// const Sam = new Employee("test", 1, "test@test.com")
-
-// console.log(Sam)
 
 function init(){
     inquirer
@@ -239,11 +176,8 @@ function buildHTML(){
             console.log("Page will not be built.")
         }
         
-    })
-    
+    })  
 }
-
-
 
 function generateHTML(i){
     setTimeout(function(){
@@ -274,10 +208,5 @@ function writeToFile(fileName, data) {
 
 init()
 
-
-// module.exports =  {
-//     employee : employee,
-//     intern : intern
-// }
 
    

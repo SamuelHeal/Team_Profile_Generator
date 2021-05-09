@@ -9,6 +9,10 @@ class engineer extends employee {
     getRole(){
         return "Engineer"
     }
+
+    getGithub(){
+        return this.github
+    }
 }
 
 module.exports = engineer
