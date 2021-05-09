@@ -12,6 +12,7 @@
   - [Test](#test)
   - [License](#license)
   - [Questions](#questions)
+  - [Image](#image)
 
   ## Installation
   Inquirer is required for the application to run and jest is needed if wanting to run tests. 
@@ -33,5 +34,5 @@
   Email: samuelheal@hotmail.com
 
   ## Image
-  ![screenshot](./Images/readmePhoto)
+  ![screenshot](readmePhoto.png)
   
