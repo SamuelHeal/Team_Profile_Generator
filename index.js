@@ -1,6 +1,10 @@
 const generateCards = require("./Source/TextGeneration/htmlGen.js")
 const htmlTop = require("./Source/TextGeneration/htmlTop.js")
 const htmlBottom = require("./Source/TextGeneration/htmlBottom.js")
+const Employee = require("./Classes/Employee")
+const Manager = require("./Classes/Manager")
+const Engineer = require("./Classes/Engineer")
+const Intern = require("./Classes/Intern")
 const inquirer = require("inquirer");
 const fs = require("fs")
 
@@ -99,70 +103,74 @@ const confirmBuild = [
     }
 ]
 
-class employee{
-    constructor(name, id, email){
-        this.name = name;
-        this.id = id;
-        this.email = email
-    }
+// class employee{
+//     constructor(name, id, email){
+//         this.name = name;
+//         this.id = id;
+//         this.email = email
+//     }
 
-    getName(){
-        return this.name
-    }
+//     getName(){
+//         return this.name
+//     }
 
-    getID(){
-        return this.id
-    }
+//     getID(){
+//         return this.id
+//     }
 
-    getEmail(){
-        return this.email
-    }
+//     getEmail(){
+//         return this.email
+//     }
 
-    getRole(){
-        return "Employee"
-    }
-}
+//     getRole(){
+//         return "Employee"
+//     }
+// }
 
-class manager extends employee {
-    constructor(name, id, email, officeNumber){
-        super(name, id, email)
-        this.officeNumber = officeNumber
-    }
+// class manager extends employee {
+//     constructor(name, id, email, officeNumber){
+//         super(name, id, email)
+//         this.officeNumber = officeNumber
+//     }
 
-    getRole(){
-        return "Manager"
-    }
-}
+//     getRole(){
+//         return "Manager"
+//     }
+// }
 
-class engineer extends employee {
-    constructor(name, id, email, github){
-        super(name, id, email)
-        this.github = github
-    }
+// class engineer extends employee {
+//     constructor(name, id, email, github){
+//         super(name, id, email)
+//         this.github = github
+//     }
 
-    getRole(){
-        return "Engineer"
-    }
-}
+//     getRole(){
+//         return "Engineer"
+//     }
+// }
 
-class intern extends employee {
-    constructor(name, id, email, school){
-        super(name, id, email)
-        this.school = school
-    }
+// class intern extends employee {
+//     constructor(name, id, email, school){
+//         super(name, id, email)
+//         this.school = school
+//     }
 
-    getRole(){
-        return "Intern"
-    }
-}
+//     getRole(){
+//         return "Intern"
+//     }
+// }
 
 const teamMembers = []
+
+// const Sam = new Employee("test", 1, "test@test.com")
+
+// console.log(Sam)
 
 function init(){
     inquirer
     .prompt(initQuestions)
     .then(function(results){
-        teamMembers.push(new manager(results.name, results.Identify, results.Email, results.officeNumber))
+        teamMembers.push(new Manager(results.name, results.Identify, results.Email, results.officeNumber))
         if (results.confirm === "Yes"){
             askPosition()
         }
@@ -190,7 +198,7 @@ function askIntern(){
     inquirer
     .prompt(internQuestions)
     .then(function(results){
-        teamMembers.push(new intern(results.name, results.Identify, results.Email, results.School))
+        teamMembers.push(new Intern(results.name, results.Identify, results.Email, results.School))
         if (results.confirm === "Yes"){
             askPosition()
         }
@@ -204,7 +212,7 @@ function askEngineer(){
     inquirer
     .prompt(engineerQuestions)
     .then(function(results){
-        teamMembers.push(new engineer(results.name, results.Identify, results.Email, results.Github))
+        teamMembers.push(new Engineer(results.name, results.Identify, results.Email, results.Github))
         if (results.confirm === "Yes"){
             askPosition()
         }
@@ -265,3 +273,11 @@ function writeToFile(fileName, data) {
 }
 
 init()
+
+
+// module.exports =  {
+//     employee : employee,
+//     intern : intern
+// }
+
+   
