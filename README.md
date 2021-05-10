@@ -33,6 +33,10 @@
   Github: https://github.com/SamuelHeal
   Email: samuelheal@hotmail.com
 
+  ## Video
+  Here is a video showing the functionality of the application.
+  Link: https://drive.google.com/file/d/1pdFIulZY9fKIp67Zak2sPT2psjBm08ZQ/view?usp=sharing
+
   ## Image
   ![screenshot](readmePhoto.png)
   
